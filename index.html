@@ -417,7 +417,61 @@
         transform: translateY(-5px);
         border-color: var(--color-secondary);
     }
+/* --- NEW: Interactive Arrow & Modal Styles --- */
+    .service-item {
+        cursor: pointer; /* Indicates clickable */
+        position: relative;
+    }
 
+    .service-item .read-more-arrow {
+        position: absolute;
+        bottom: 20px;
+        right: 25px;
+        font-size: 28px;
+        color: #ddd; /* Subtle default color */
+        transition: all 0.3s ease;
+    }
+
+    /* Hover Effect: Card moves up, arrow turns green and moves right */
+    .service-item:hover .read-more-arrow {
+        color: var(--color-secondary);
+        transform: translateX(5px);
+    }
+
+    /* Modal Styling */
+    .service-modal .modal-header {
+        border-bottom: 4px solid var(--color-secondary);
+        background: #f8faff;
+    }
+    
+    .service-modal .modal-title {
+        color: var(--color-primary);
+        font-family: var(--font-heading);
+        font-weight: 700;
+    }
+
+    .service-modal .modal-body ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .service-modal .modal-body ul li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    /* Green checkmark for modal lists */
+    .service-modal .modal-body ul li::before {
+        content: "\F26A"; /* Bootstrap Icon Check Circle */
+        font-family: "bootstrap-icons";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: var(--color-secondary);
+        font-size: 18px;
+    }
     /* Portfolio */
     .portfolio-item {
         margin-bottom: 30px;
@@ -791,69 +845,77 @@
     <section id="services" class="services section light-background">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Check Our <span>Services</span></p>
+          <h2>Our Expertise</h2>
+          <p>Comprehensive <span>IT Solutions</span></p>
         </div>
 
         <div class="row">
+
           <!-- Service 1 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-usb-plug"></i></div>
-              <h3>Cabling Solutions</h3>
-              <p>Expert laying of Cat-6 UTP Cable, Termination of Cat-6 I/O, and flexible pipe laying for seamless data transmission.</p>
+            <!-- Added data-bs-toggle to trigger modal -->
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService1">
+              <div class="icon"><i class="bi bi-diagram-3"></i></div>
+              <h3>IT Infrastructure Architecture</h3>
+              <p>Custom-designed, growth-ready blueprints for servers, storage, and networking to power your business.</p>
+              <!-- The Arrow -->
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
           <!-- Service 2 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-hdd-network"></i></div>
-              <h3>Rack Setup</h3>
-              <p>Installation & Dressing of Server Racks (6U/9U/12U/15U) ensuring proper airflow and organization.</p>
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService2">
+              <div class="icon"><i class="bi bi-sliders"></i></div>
+              <h3>Device Configuration</h3>
+              <p>Professional provisioning of routers, switches, and firewalls with standardized security hardening.</p>
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
           <!-- Service 3 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-bricks"></i></div>
-              <h3>Conduit Fixing</h3>
-              <p>Fixing of 1"/2" Casing capping, PVC conduit pipes, and 2x4" PVC Channels without visible accessories.</p>
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService3">
+              <div class="icon"><i class="bi bi-shield-lock"></i></div>
+              <h3>Zero-Trust Security</h3>
+              <p>Multi-layered defense including Next-Gen Firewalls, MFA, and identity-based access controls.</p>
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
           <!-- Service 4 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-outlet"></i></div>
-              <h3>Face Plates</h3>
-              <p>Fixing of surface mount Boxes & Face Plates to provide a clean interface for network connectivity.</p>
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService4">
+              <div class="icon"><i class="bi bi-headset"></i></div>
+              <h3>Hybrid Support (24/7)</h3>
+              <p>AI-driven remote monitoring combined with rapid onsite technical response for Pune businesses.</p>
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
           <!-- Service 5 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-123"></i></div>
-              <h3>Labelling</h3>
-              <p>Complete Feruling, Numbering, Patch Panel Stickers, and Patch Cord Stickers for easy identification.</p>
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService5">
+              <div class="icon"><i class="bi bi-cart-check"></i></div>
+              <h3>Equipment Sales</h3>
+              <p>Strategic procurement and inventory management of high-quality IT hardware and networking gear.</p>
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
           <!-- Service 6 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item">
-              <div class="icon"><i class="bi bi-shield-check"></i></div>
-              <h3>Maintenance</h3>
-              <p>Ongoing support and maintenance for existing network infrastructure to ensure zero downtime.</p>
+            <div class="service-item" data-bs-toggle="modal" data-bs-target="#modalService6">
+              <div class="icon"><i class="bi bi-tools"></i></div>
+              <h3>Proactive AMC</h3>
+              <p>Comprehensive Maintenance Contracts to maximize uptime and extend hardware lifespan.</p>
+              <i class="bi bi-arrow-right-circle-fill read-more-arrow"></i>
             </div>
           </div>
 
         </div>
       </div>
     </section>
-
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
       <div class="container" data-aos="fade-up">
@@ -954,7 +1016,145 @@
         </div>
       </div>
     </section>
+<!-- SERVICE DETAILS MODALS -->
+    
+    <!-- Modal 1: Infrastructure -->
+    <div class="modal fade service-modal" id="modalService1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-diagram-3 me-2"></i> Infrastructure Architecture</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Strategic Planning:</strong> Aligning hardware choices with your 3-year and 5-year business goals.</li>
+              <li><strong>Modular Design:</strong> Building in "blocks" so you can scale up by adding units rather than replacing systems.</li>
+              <li><strong>Hybrid Integration:</strong> Seamlessly blending on-premise hardware with cloud flexibility.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService1')).hide()">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Modal 2: Device Config -->
+    <div class="modal fade service-modal" id="modalService2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-sliders me-2"></i> Device Configuration</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Zero-Touch Provisioning:</strong> Rapid deployment across multiple branches using automated scripts.</li>
+              <li><strong>Proxmox & Virtualization:</strong> Setting up hypervisors to run multiple VMs on a single physical host.</li>
+              <li><strong>Firmware Compliance:</strong> Ensuring every device runs the securest software version before going live.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService2')).hide()">Discuss Config</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Security -->
+    <div class="modal fade service-modal" id="modalService3" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-shield-lock me-2"></i> Zero-Trust Security</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Micro-segmentation:</strong> Isolating sensitive departments so a breach in one area cannot spread.</li>
+              <li><strong>MFA Integration:</strong> Deploying Multi-Factor Authentication across all network entry points.</li>
+              <li><strong>Threat Detection:</strong> Real-time monitoring for zero-day exploits and suspicious traffic patterns.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService3')).hide()">Secure My Network</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Support -->
+    <div class="modal fade service-modal" id="modalService4" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-headset me-2"></i> Hybrid Support</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Predictive Maintenance:</strong> We fix bottlenecks before they cause downtime using advanced telemetry.</li>
+              <li><strong>L1-L3 Helpdesk:</strong> Expert support ranging from password resets to network re-engineering.</li>
+              <li><strong>Onsite Hands-On:</strong> Direct physical support in Pune/Loni Kalbhor for hardware swaps.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService4')).hide()">Get Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5: Sales -->
+    <div class="modal fade service-modal" id="modalService5" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-cart-check me-2"></i> Equipment Sales</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>TCO Analysis:</strong> Selecting equipment based on Total Cost of Ownership and reliability.</li>
+              <li><strong>Asset Tracking:</strong> Monitoring warranty status and End-of-Life dates to plan budget refreshes.</li>
+              <li><strong>Secure Disposal:</strong> Certified data wiping and eco-friendly hardware recycling.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService5')).hide()">Order Hardware</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6: AMC -->
+    <div class="modal fade service-modal" id="modalService6" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-tools me-2"></i> Proactive AMC</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li><strong>Preventive Audits:</strong> Scheduled physical inspections to prevent sudden failures.</li>
+              <li><strong>Backup & Recovery:</strong> Automated offsite backups and disaster recovery testing.</li>
+              <li><strong>Performance Tuning:</strong> Ongoing optimization of cooling, power, and bandwidth settings.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <a href="#contact" class="btn btn-primary btn-sm" onclick="bootstrap.Modal.getInstance(document.getElementById('modalService6')).hide()">Start AMC</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -1183,5 +1383,6 @@
 </body>
 
 </html>
+
 
 
