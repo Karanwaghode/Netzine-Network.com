@@ -199,75 +199,35 @@
       .navmenu ul { display: none; } /* Simplified */
     }
 
-    /* Hero Section */
-    #hero {
-      width: 100%;
-      height: 85vh;
-      /* Reliable Unsplash ID for Network/Server background */
-      background: url('https://images.unsplash.com/photo-1558494949-ef2cb3cc42f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90') top center;
-      background-size: cover;
-      position: relative;
-      background-attachment: fixed;
-    }
+/* Updated Hero Section */
+#hero {
+  width: 100%;
+  height: 85vh;
+  /* Replaced image with a clean tech gradient */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+  overflow: hidden; /* Keeps animation inside the box */
+}
 
-    #hero:before {
-      content: "";
-      background: rgba(255, 255, 255, 0.85); /* Light overlay */
-      position: absolute;
-      bottom: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
+/* The Container for the Animation */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Behind the text */
+}
 
-    #hero .container {
-      position: relative;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    #hero h1 {
-      margin: 0;
-      font-size: 56px;
-      font-weight: 700;
-      line-height: 64px;
-      color: var(--color-primary);
-    }
-
-    #hero h1 span {
-      color: var(--color-secondary);
-    }
-
-    #hero h2 {
-      color: #555;
-      margin: 15px 0 30px 0;
-      font-size: 24px;
-      font-weight: 400;
-      font-family: var(--font-default);
-    }
-
-    #hero .btn-get-started {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: 1px;
-      display: inline-block;
-      padding: 12px 35px;
-      border-radius: 5px;
-      transition: 0.5s;
-      margin-top: 30px;
-      color: #fff;
-      background: var(--color-secondary);
-      box-shadow: 0 5px 15px rgba(141, 198, 63, 0.4);
-    }
-
-    #hero .btn-get-started:hover {
-      background: #262262; /* Hover turns blue */
-      color: #fff;
-      transform: translateY(-2px);
-    }
+/* Ensure Text sits ON TOP of the animation */
+#hero .container {
+  position: relative;
+  z-index: 2; /* In front of animation */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
     /* Featured Services */
     .featured-services {
@@ -725,19 +685,21 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span>Netzine Network</span></h1>
-      <h2>Expert IT Sales & Structured Cabling Solutions in Pune</h2>
-      <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="#contact" class="btn-get-started scrollto" style="background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); margin-left: 10px;">Contact Us</a>
-      </div>
-    </div>
-  </section>
+<!-- Hero Section -->
+<section id="hero" class="d-flex align-items-center">
+  
+  <!-- THIS IS THE NEW LINE FOR ANIMATION -->
+  <div id="particles-js"></div>
 
-  <main id="main">
+  <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <h1>Welcome to <span>Netzine Network</span></h1>
+    <h2>Expert IT Sales & Structured Cabling Solutions in Pune</h2>
+    <div class="d-flex">
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <a href="#contact" class="btn-get-started scrollto" style="background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); margin-left: 10px;">Contact Us</a>
+    </div>
+  </div>
+</section>>
 
     <!-- Featured Services (Quick Look) -->
     <section id="featured-services" class="featured-services">
@@ -1209,6 +1171,11 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
 
+  
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  
   <!-- Main JS -->
   <script>
     (function() {
@@ -1379,10 +1346,86 @@
 
     })()
   </script>
-
+<script>
+  // Initialize Particles.js
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 80, // Number of dots
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": ["#262262", "#8dc63f"] // Your Brand Colors (Navy & Green)
+      },
+      "shape": {
+        "type": "circle", // Nodes looks like servers/endpoints
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false
+      },
+      "size": {
+        "value": 3,
+        "random": true
+      },
+      "line_linked": {
+        "enable": true, // This creates the "Network Cable" effect
+        "distance": 150,
+        "color": "#262262", // Navy blue lines
+        "opacity": 0.2,     // Subtle lines
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2, // Slow, professional movement
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "grab" // Lines will connect to mouse cursor
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push" // Adds particles on click
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 140,
+          "line_linked": {
+            "opacity": 1
+          }
+        }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
 </body>
 
 </html>
+
 
 
 
